@@ -1,28 +1,12 @@
-const images = [
-    'image1.jpg',
-    'image2.jpg',
-    'image3.jpg',
-    'image4.jpg',
-    'image5.jpg',
-    'image6.jpg'
-];
-
-let currentIndex = 0;
-
-const imageElement = document.getElementById('image');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-function updateImage() {
-    imageElement.src = images[currentIndex];
+function formularz() {
+	let check = document.getElementById("check").checked;
+	if (check) {
+		let wynik = document.getElementById("wynik");
+		let imie = (document.getElementById("imie").value).toUpperCase();
+		let nazwisko = (document.getElementById("nazwisko").value).toUpperCase();
+		let usluga = document.getElementById("zgloszenie").value;
+		wynik.innerHTML = "<span style='color: navy'>" + imie + " " + nazwisko + "<br/>" + "Treść Twojej sprawy: " + usluga + "</span>";
+	} else {
+		wynik.innerHTML = "<span style='color: red;'>Musisz zapoznać się z regulaminem</span>";
+	}
 }
-
-prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
-    updateImage();
-});
-
-nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex === images.length - 1) ? 0 : currentIndex + 1;
-    updateImage();
-});
